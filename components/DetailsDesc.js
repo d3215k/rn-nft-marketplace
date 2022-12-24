@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { View, Text } from 'react-native'
 
 import { EthPrice, NFTTitle } from './SubInfo';
-import { COLORS, SIZES, FONTS } from '../constants';
 
 const DetailsDesc = ({ data }) => {
   const [text, setText] = useState(data.description.slice(0, 100));
@@ -10,43 +9,24 @@ const DetailsDesc = ({ data }) => {
 
   return (
     <>
-      <View style={{ 
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-       }}>
+      <View className="w-full flex-row justify-between items-center">
         <NFTTitle
           title={data.name}
           subTitle={data.creator}
-          titleSize={SIZES.extraLarge}
-          subTitleSize={SIZES.font}
         />
 
         <EthPrice price={data.price} />
       </View>
       
-      <View style={{ marginVertical: SIZES.extraLarge * 1.5 }}>
-       <Text style={{ 
-          fontSize: SIZES.font,
-          fontFamily: FONTS.semiBold,
-          color: COLORS.primary,
-        }}>Description</Text>
-        <View style={{ marginTop: SIZES.base }}>
-          <Text style={{ 
-            fontSize: SIZES.small,
-            fontFamily: FONTS.regular,
-            color: COLORS.secondary,
-            lineHeight: SIZES.large
-          }}>
+      <View className="my-4">
+        <Text className="text-md font-semibold text-black">
+          Description
+        </Text>
+        <View className="mt-2">
+          <Text className="text-xs font-regular text-gray-700 leading-relaxed">
             {text}
             {!readMore && ' ...'}
-            <Text 
-              style={{ 
-                fontSize: SIZES.small,
-                fontFamily: FONTS.semiBold,
-                color: COLORS.primary,
-              }}
+            <Text className="text-xs font-semibold text-black"
               onPress={() => {
                 if(!readMore) {
                   setText(data.description);

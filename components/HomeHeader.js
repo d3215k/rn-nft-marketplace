@@ -1,64 +1,44 @@
 import { View, Text, Image, TextInput } from 'react-native';
 
-import { COLORS, FONTS, SIZES, assets } from '../constants';
+import { assets } from '../constants';
 
 const HomeHeader = ({ onSearch }) => {
   return (
-    <View style={{ 
-      backgroundColor: COLORS.primary,
-      padding: SIZES.font,
-     }}>
-      <View style={{ 
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-       }}>
-        <Image
+    <View className="bg-gray-900 p-4">
+      <View className="flex-row justify-between align-middle">
+        <Image className="w-[90] h-[25]"
           source={assets.logo}
           resizeMode="contain"
-          style={{ width: 90, height: 25 }}
         />
 
-        <View style={{ width: 45, height: 45 }}>
-          <Image 
+        <View className="h-12 w-12 realtive">
+          <Image className="w-full h-full"
             source={assets.person01}
             resizeMode="contain"
-            style={{ width: '100%', height: '100%' }}
           />
-          <Image 
+          <Image className="absolute w-4 h-4 bottom-0 right-0"
             source={assets.badge}
             resizeMode="contain"
-            style={{ position: 'absolute', width: 15, height: 15, bottom: 0, right: 0 }}
           />
         </View>
       </View>
 
-      <View style={{ marginVertical: SIZES.font }}>
-        <Text style={{ fontsize: SIZES.small, color: COLORS.white }}>
+      <View className="mx-1">
+        <Text className="text-white text-sm" >
           Hello, Dede Iskandar 👋
         </Text>
-        <Text style={{ fontFamily: FONTS.bold, fontSize: SIZES.large, color: COLORS.white, marginTop: SIZES.base }}>
+        <Text className="font-semibold text-lg text-white mt-2">
           Let's find a masterpiece
         </Text>
 
-        <View style={{ marginTop: SIZES.font }}>
-          <View style={{ 
-            width: '100%',
-            borderRadius: SIZES.font,
-            backgroundColor: COLORS.gray,
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingHorizontal: SIZES.font,
-            paddingVertical: SIZES.small - 2
-           }}>
-            <Image
+        <View className="mt-4">
+          <View className="w-full rounded-md bg-gray-600 flex-row items-center px-4 py-2">
+            <Image className="w-6 h-6 mr-2"
               source={assets.search}
               resizeMode="contain"
-              style={{ width: 20, height: 20, marginRight: SIZES.base }}
             />
-            <TextInput 
+            <TextInput className="flex-1"
               placeholder='Search NFTs'
-              style={{ flex: 1 }}
               onChangeText={onSearch}
             />
           </View>

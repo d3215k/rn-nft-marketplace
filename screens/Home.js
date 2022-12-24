@@ -23,10 +23,10 @@ const Home = () => {
   }
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar background={COLORS.primary}/>
+      <FocusedStatusBar/>
       
-      <View style={{ flex: 1 }}>
-        <View style={{ zIndex: 0 }}>
+      <View className="relative flex-1">
+        <View className="z-0">
           <FlatList
             data={nftData}
             renderItem={({item}) => <NFTCard data={item} />}
@@ -36,16 +36,10 @@ const Home = () => {
           />
         </View>
 
-        <View style={{ 
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          zIndex: -1,
-         }}>
-          <View style={{ height: 300, backgroundColor: COLORS.primary }} />
-          <View style={{ flex: 2, backgroundColor: COLORS.white}} />
+        <View className="absolute top-0 bottom-0 right-0 left-0 -z-10"
+        >
+          <View className="h-[300] bg-gray-900"/>
+          <View className="flex-2 bg-white"/>
         </View>
       </View>
     </SafeAreaView>

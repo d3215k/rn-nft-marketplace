@@ -1,6 +1,6 @@
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { COLORS, SIZES, SHADOWS, assets } from '../constants';
+import { assets } from '../constants';
 import { CircleButton, RectButton } from './Button';
 import { SubInfo, EthPrice, NFTTitle } from './SubInfo';
 
@@ -8,23 +8,12 @@ const NFTCard = ({data}) => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ 
-      backgroundColor: COLORS.white,
-      borderRadius: SIZES.font,
-      marginBottom: SIZES.extraLarge,
-      margin: SIZES.base,
-      ...SHADOWS.dark
-     }}>
-      <View style={{ width: '100%', height: 250 }}>
+    <View className="rounded-xl mb-4 bg-white m-4 shadow-2xl shadow-black">
+      <View className="w-full h-[230]">
         <Image
           source={data.image}
           resizeMode="cover"
-          style={{ 
-            width: '100%',
-            height: '100%',
-            borderTopLeftRadius: SIZES.font,
-            borderTopRightRadius: SIZES.font,
-           }}
+          className="w-full h-full rounded-t-xl"
         />
 
         <CircleButton imgUrl={assets.heart} right={10} top={10} />
@@ -32,24 +21,16 @@ const NFTCard = ({data}) => {
 
       <SubInfo />
 
-      <View style={{ width: "100%", padding: SIZES.font }}>
+      <View className="w-full p-4">
         <NFTTitle 
           title={data.name}
           subTitle={data.creator}
-          titleSize={SIZES.large}
-          subTitleSize={SIZES.small}
         />
 
-        <View style={{ 
-          marginTop: SIZES.font,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItem: 'center'
-         }}>
+        <View className="mt-2 flex-row justify-between align-middle">
           <EthPrice price={data.price} />
           <RectButton
             minWidth={120}
-            fontSize={SIZES.font}
             handlePress={() => navigation.navigate("Details", {data})}
           />
         </View>
